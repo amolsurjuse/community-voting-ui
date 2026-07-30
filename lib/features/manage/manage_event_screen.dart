@@ -9,7 +9,6 @@ import '../../core/widgets/candidate_avatar.dart';
 import '../../core/widgets/common.dart';
 import '../../core/widgets/states.dart';
 import '../../data/providers.dart';
-import '../../domain/models/enums.dart';
 import '../../domain/models/event.dart';
 import '../event/share_sheet.dart';
 import '../home/home_screen.dart';

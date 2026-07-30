@@ -4,12 +4,10 @@ import 'dart:math';
 import '../domain/models/activity.dart';
 import '../domain/models/analytics.dart';
 import '../domain/models/ballot.dart';
-import '../domain/models/candidate.dart';
 import '../domain/models/enums.dart';
 import '../domain/models/event.dart';
 import '../domain/models/organizer.dart';
 import '../domain/models/results.dart';
-import '../domain/repositories.dart';
 import 'ranked_choice_counter.dart';
 import 'seed_data.dart';
 
