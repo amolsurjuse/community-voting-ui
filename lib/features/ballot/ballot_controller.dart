@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../data/providers.dart';
 import '../../domain/models/ballot.dart';
@@ -211,8 +212,7 @@ class BallotFlowController extends FamilyNotifier<BallotFlowState, String> {
     final tokened = draft.clientToken != null
         ? draft
         : draft.copyWith(
-            clientToken:
-                'ct_${event.id}_${DateTime.now().microsecondsSinceEpoch}',
+            clientToken: const Uuid().v4(),
           );
     state = state.copyWith(phase: BallotPhase.submitting, draft: tokened);
 
@@ -243,7 +243,8 @@ class BallotFlowController extends FamilyNotifier<BallotFlowState, String> {
       case BallotVerificationExpired():
         state = state.copyWith(
           phase: BallotPhase.verificationExpired,
-          message: 'Your verification session expired. Verify again to continue — '
+          message:
+              'Your verification session expired. Verify again to continue — '
               'your selections are saved.',
         );
       case BallotInvalid(:final reason):

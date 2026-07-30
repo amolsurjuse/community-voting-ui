@@ -35,7 +35,8 @@ class BallotDraft {
     switch (ballotType) {
       case BallotType.singleChoice:
         if (selections.length != 1) {
-          return const BallotValidation(false, 'Select one option to continue.');
+          return const BallotValidation(
+              false, 'Select one option to continue.');
         }
         return const BallotValidation(true, '');
       case BallotType.multipleChoice:
@@ -56,7 +57,8 @@ class BallotDraft {
         return const BallotValidation(true, '');
       case BallotType.rankedChoice:
         if (selections.toSet().length != selections.length) {
-          return const BallotValidation(false, 'Each option can only hold one rank.');
+          return const BallotValidation(
+              false, 'Each option can only hold one rank.');
         }
         if (rules.requireFullRanking && selections.length < candidateCount) {
           return BallotValidation(
@@ -69,7 +71,8 @@ class BallotDraft {
         }
         return const BallotValidation(true, '');
       case BallotType.score:
-        return const BallotValidation(false, 'Score voting is not available yet.');
+        return const BallotValidation(
+            false, 'Score voting is not available yet.');
     }
   }
 }

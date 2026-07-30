@@ -185,7 +185,8 @@ class _VerificationGate extends StatelessWidget {
         ],
         const SizedBox(height: Spacing.lg),
         const InfoCallout(
-          text: 'Development build: any 6-digit code ending in an even digit works.',
+          text:
+              'Development build: any 6-digit code ending in an even digit works.',
         ),
       ],
     );
@@ -215,7 +216,8 @@ class _BallotBuilder extends StatelessWidget {
         _BallotHeader(event: event, selectedCount: draft.selections.length),
         if (state.message != null)
           Padding(
-            padding: const EdgeInsets.fromLTRB(Spacing.lg, 0, Spacing.lg, Spacing.sm),
+            padding: const EdgeInsets.fromLTRB(
+                Spacing.lg, 0, Spacing.lg, Spacing.sm),
             child: InfoCallout(
               text: state.message!,
               icon: Icons.info_outline,
@@ -262,7 +264,10 @@ class _BallotHeader extends StatelessWidget {
     final theme = Theme.of(context);
     final rules = event.rules;
     final (instruction, counter) = switch (rules.ballotType) {
-      BallotType.singleChoice => ('Select one option', selectedCount == 1 ? '1 selected' : 'None selected'),
+      BallotType.singleChoice => (
+          'Select one option',
+          selectedCount == 1 ? '1 selected' : 'None selected'
+        ),
       BallotType.multipleChoice => (
           'Select ${rules.minSelections == rules.maxSelections ? rules.minSelections : '${rules.minSelections}–${rules.maxSelections}'} options',
           '$selectedCount of ${rules.maxSelections} selected',
@@ -281,13 +286,15 @@ class _BallotHeader extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(child: Text(instruction, style: theme.textTheme.titleMedium)),
+              Expanded(
+                  child: Text(instruction, style: theme.textTheme.titleMedium)),
               AnimatedSwitcher(
                 duration: Motion.of(context, Motion.fast),
                 child: Container(
                   key: ValueKey(counter),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: Spacing.md, vertical: 4,
+                    horizontal: Spacing.md,
+                    vertical: 4,
                   ),
                   decoration: BoxDecoration(
                     color: theme.colorScheme.primary.withValues(alpha: 0.1),
@@ -382,7 +389,8 @@ class _SelectableCandidateCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Semantics(
-      label: '${candidate.name}${candidate.subtitle.isNotEmpty ? ', ${candidate.subtitle}' : ''}',
+      label:
+          '${candidate.name}${candidate.subtitle.isNotEmpty ? ', ${candidate.subtitle}' : ''}',
       selected: selected,
       button: true,
       child: AnimatedContainer(
@@ -412,7 +420,8 @@ class _SelectableCandidateCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(candidate.name, style: theme.textTheme.titleMedium),
+                        Text(candidate.name,
+                            style: theme.textTheme.titleMedium),
                         if (candidate.subtitle.isNotEmpty)
                           Text(
                             candidate.subtitle,
@@ -474,7 +483,8 @@ class _RankedList extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: Text('Your ranking', style: theme.textTheme.titleSmall),
+                    child:
+                        Text('Your ranking', style: theme.textTheme.titleSmall),
                   ),
                   TextButton.icon(
                     onPressed: () {
@@ -513,16 +523,20 @@ class _RankedList extends StatelessWidget {
         ),
         if (unranked.isNotEmpty) ...[
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(Spacing.lg, Spacing.md, Spacing.lg, Spacing.sm),
+            padding: const EdgeInsets.fromLTRB(
+                Spacing.lg, Spacing.md, Spacing.lg, Spacing.sm),
             sliver: SliverToBoxAdapter(
               child: Text(
-                ranked.isEmpty ? 'Tap options in your order of preference' : 'Not yet ranked',
+                ranked.isEmpty
+                    ? 'Tap options in your order of preference'
+                    : 'Not yet ranked',
                 style: theme.textTheme.titleSmall,
               ),
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(Spacing.lg, 0, Spacing.lg, Spacing.lg),
+            padding: const EdgeInsets.fromLTRB(
+                Spacing.lg, 0, Spacing.lg, Spacing.lg),
             sliver: SliverList.separated(
               itemCount: unranked.length,
               separatorBuilder: (_, __) => const SizedBox(height: Spacing.md),
@@ -578,7 +592,8 @@ class _RankedCard extends StatelessWidget {
           border: Border.all(color: theme.colorScheme.primary, width: 1.5),
         ),
         padding: const EdgeInsets.symmetric(
-          horizontal: Spacing.md, vertical: Spacing.sm,
+          horizontal: Spacing.md,
+          vertical: Spacing.sm,
         ),
         child: Row(
           children: [
@@ -649,7 +664,8 @@ class _BottomActionBar extends StatelessWidget {
       padding: const EdgeInsets.all(Spacing.lg),
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainerLow,
-        border: Border(top: BorderSide(color: theme.colorScheme.outlineVariant)),
+        border:
+            Border(top: BorderSide(color: theme.colorScheme.outlineVariant)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -697,7 +713,8 @@ class _SubmittingView extends StatelessWidget {
               child: CircularProgressIndicator(strokeWidth: 3),
             ),
             const SizedBox(height: Spacing.xl),
-            Text(title, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
+            Text(title,
+                style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
             const SizedBox(height: Spacing.sm),
             Text(
               message,

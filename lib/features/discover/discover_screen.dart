@@ -121,7 +121,8 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
                 _SearchResults(history: _searchHistory)
               else ...[
                 const _Rail(title: 'Trending', provider: _RailKind.trending),
-                const _Rail(title: 'Closing soon', provider: _RailKind.closingSoon),
+                const _Rail(
+                    title: 'Closing soon', provider: _RailKind.closingSoon),
                 if (_searchHistory.isNotEmpty)
                   SliverToBoxAdapter(
                     child: Column(

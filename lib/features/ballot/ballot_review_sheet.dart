@@ -77,7 +77,8 @@ class _ReviewSheet extends StatelessWidget {
                   CandidateAvatar(candidate: candidate, size: 36),
                   const SizedBox(width: Spacing.md),
                   Expanded(
-                    child: Text(candidate.name, style: theme.textTheme.titleSmall),
+                    child:
+                        Text(candidate.name, style: theme.textTheme.titleSmall),
                   ),
                 ],
               ),
@@ -94,7 +95,8 @@ class _ReviewSheet extends StatelessWidget {
           const SizedBox(height: Spacing.lg),
           const InfoCallout(
             icon: Icons.gpp_good_outlined,
-            text: 'Review your ballot carefully. After it is accepted, it cannot be changed.',
+            text:
+                'Review your ballot carefully. After it is accepted, it cannot be changed.',
           ),
           const SizedBox(height: Spacing.xl),
           FilledButton(

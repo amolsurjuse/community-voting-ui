@@ -14,8 +14,8 @@ import '../../domain/models/results.dart';
 import '../event/event_details_screen.dart';
 import 'ranked_rounds_view.dart';
 
-final resultsStreamProvider = StreamProvider.autoDispose
-    .family<ResultsSnapshot, String>((ref, eventId) {
+final resultsStreamProvider =
+    StreamProvider.autoDispose.family<ResultsSnapshot, String>((ref, eventId) {
   return ref.watch(resultsRepositoryProvider).watchResults(eventId);
 });
 
@@ -52,7 +52,8 @@ class ResultsScreen extends ConsumerWidget {
               return const EmptyState(
                 icon: Icons.visibility_off_outlined,
                 title: 'Results are private',
-                message: 'The organizer has chosen to keep results visible only to themselves.',
+                message:
+                    'The organizer has chosen to keep results visible only to themselves.',
               );
             }
             if (!event.isClosed &&
@@ -95,7 +96,8 @@ class _ResultsBody extends ConsumerWidget {
         final byId = {for (final c in event.activeCandidates) c.id: c};
         final leaders = snapshot.leaders.toSet();
         return RefreshIndicator(
-          onRefresh: () async => ref.invalidate(resultsStreamProvider(event.id)),
+          onRefresh: () async =>
+              ref.invalidate(resultsStreamProvider(event.id)),
           child: ListView(
             physics: const AlwaysScrollableScrollPhysics(),
             padding: const EdgeInsets.all(Spacing.lg),
@@ -107,9 +109,11 @@ class _ResultsBody extends ConsumerWidget {
                   if (!snapshot.isFinal) ...[
                     const _LiveDot(),
                     const SizedBox(width: Spacing.xs),
-                    Text('Live', style: theme.textTheme.labelSmall?.copyWith(
-                      color: AppColors.success, fontWeight: FontWeight.w700,
-                    )),
+                    Text('Live',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: AppColors.success,
+                          fontWeight: FontWeight.w700,
+                        )),
                     const SizedBox(width: Spacing.md),
                   ] else ...[
                     const Icon(Icons.flag, size: 14, color: AppColors.warning),
@@ -135,7 +139,8 @@ class _ResultsBody extends ConsumerWidget {
               if (snapshot.belowThreshold)
                 const InfoCallout(
                   icon: Icons.visibility_off_outlined,
-                  text: 'Counts are hidden until a minimum number of ballots is '
+                  text:
+                      'Counts are hidden until a minimum number of ballots is '
                       'reached, to protect early-voter privacy.',
                 )
               else if (isRanked) ...[

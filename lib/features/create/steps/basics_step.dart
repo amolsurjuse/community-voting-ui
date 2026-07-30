@@ -5,7 +5,18 @@ import '../../../core/widgets/candidate_avatar.dart';
 import '../../../domain/models/enums.dart';
 import '../create_wizard_controller.dart';
 
-const _coverEmojis = ['🗳️', '🌟', '🏆', '🎨', '🎓', '🚴', '📚', '🎉', '💡', '🏕️'];
+const _coverEmojis = [
+  '🗳️',
+  '🌟',
+  '🏆',
+  '🎨',
+  '🎓',
+  '🚴',
+  '📚',
+  '🎉',
+  '💡',
+  '🏕️'
+];
 
 /// Step 1: title, descriptions, category, cover, location, language.
 class BasicsStep extends StatefulWidget {
@@ -120,7 +131,8 @@ class _BasicsStepState extends State<BasicsStep> {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: _coverEmojis.length,
-                  separatorBuilder: (_, __) => const SizedBox(width: Spacing.sm),
+                  separatorBuilder: (_, __) =>
+                      const SizedBox(width: Spacing.sm),
                   itemBuilder: (context, i) {
                     final emoji = _coverEmojis[i];
                     final selected = draft.coverEmoji == emoji;
@@ -140,7 +152,8 @@ class _BasicsStepState extends State<BasicsStep> {
                             width: selected ? 2 : 1,
                           ),
                         ),
-                        child: Text(emoji, style: const TextStyle(fontSize: 22)),
+                        child:
+                            Text(emoji, style: const TextStyle(fontSize: 22)),
                       ),
                     );
                   },

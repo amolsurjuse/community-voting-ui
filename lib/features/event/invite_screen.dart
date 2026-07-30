@@ -27,7 +27,8 @@ class InviteScreen extends ConsumerWidget {
         child: async.when(
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (_, __) => ErrorPanel(
-            message: 'We could not verify this invitation. Check your connection.',
+            message:
+                'We could not verify this invitation. Check your connection.',
             onRetry: () => ref.invalidate(_inviteProvider(token)),
           ),
           data: (event) {

@@ -28,8 +28,9 @@ class EventAnalytics {
   /// enough to be privacy-safe (empty map = hidden).
   final Map<String, double> platformSplit;
 
-  double get verificationCompletionRate =>
-      verificationStarted == 0 ? 0 : verificationCompleted / verificationStarted;
+  double get verificationCompletionRate => verificationStarted == 0
+      ? 0
+      : verificationCompleted / verificationStarted;
 
   double get submissionRate =>
       verificationCompleted == 0 ? 0 : acceptedBallots / verificationCompleted;

@@ -38,7 +38,9 @@ class EmptyState extends StatelessWidget {
               child: Icon(icon, size: 32, color: theme.colorScheme.primary),
             ),
             const SizedBox(height: Spacing.lg),
-            Text(title, style: theme.textTheme.titleMedium, textAlign: TextAlign.center),
+            Text(title,
+                style: theme.textTheme.titleMedium,
+                textAlign: TextAlign.center),
             const SizedBox(height: Spacing.sm),
             Text(
               message,
@@ -47,7 +49,8 @@ class EmptyState extends StatelessWidget {
             ),
             if (actionLabel != null) ...[
               const SizedBox(height: Spacing.xl),
-              FilledButton.tonal(onPressed: onAction, child: Text(actionLabel!)),
+              FilledButton.tonal(
+                  onPressed: onAction, child: Text(actionLabel!)),
             ],
           ],
         ),
@@ -78,11 +81,13 @@ class ErrorPanel extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.cloud_off_outlined, size: 40, color: AppColors.inkMuted),
+            const Icon(Icons.cloud_off_outlined,
+                size: 40, color: AppColors.inkMuted),
             const SizedBox(height: Spacing.lg),
             Text(title, style: theme.textTheme.titleMedium),
             const SizedBox(height: Spacing.sm),
-            Text(message, style: theme.textTheme.bodySmall, textAlign: TextAlign.center),
+            Text(message,
+                style: theme.textTheme.bodySmall, textAlign: TextAlign.center),
             if (onRetry != null) ...[
               const SizedBox(height: Spacing.xl),
               OutlinedButton.icon(

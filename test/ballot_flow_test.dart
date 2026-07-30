@@ -118,12 +118,12 @@ void main() {
       notifier.toggleSelection(ids[0]);
       notifier.toggleSelection(ids[1]);
       notifier.toggleSelection(ids[2]);
-      expect(container.read(provider).draft!.selections,
-          [ids[0], ids[1], ids[2]]);
+      expect(
+          container.read(provider).draft!.selections, [ids[0], ids[1], ids[2]]);
 
       notifier.reorderRanking(2, 0); // move third pick to rank 1
-      expect(container.read(provider).draft!.selections,
-          [ids[2], ids[0], ids[1]]);
+      expect(
+          container.read(provider).draft!.selections, [ids[2], ids[0], ids[1]]);
 
       notifier.resetRanking();
       expect(container.read(provider).draft!.selections, isEmpty);

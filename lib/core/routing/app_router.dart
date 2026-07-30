@@ -35,10 +35,16 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     errorBuilder: (context, state) => const LinkErrorScreen(),
     routes: [
       GoRoute(path: '/splash', builder: (_, __) => const SplashScreen()),
-      GoRoute(path: '/onboarding', builder: (_, __) => const OnboardingScreen()),
-      GoRoute(path: '/auth/register', builder: (_, __) => const RegisterScreen()),
-      GoRoute(path: '/auth/verify-email', builder: (_, __) => const EmailVerifyScreen()),
-      GoRoute(path: '/auth/verify-phone', builder: (_, __) => const PhoneVerifyScreen()),
+      GoRoute(
+          path: '/onboarding', builder: (_, __) => const OnboardingScreen()),
+      GoRoute(
+          path: '/auth/register', builder: (_, __) => const RegisterScreen()),
+      GoRoute(
+          path: '/auth/verify-email',
+          builder: (_, __) => const EmailVerifyScreen()),
+      GoRoute(
+          path: '/auth/verify-phone',
+          builder: (_, __) => const PhoneVerifyScreen()),
 
       // Organizer shell with bottom navigation.
       StatefulShellRoute.indexedStack(
@@ -48,13 +54,16 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             GoRoute(path: '/home', builder: (_, __) => const HomeScreen()),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: '/discover', builder: (_, __) => const DiscoverScreen()),
+            GoRoute(
+                path: '/discover', builder: (_, __) => const DiscoverScreen()),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: '/activity', builder: (_, __) => const ActivityScreen()),
+            GoRoute(
+                path: '/activity', builder: (_, __) => const ActivityScreen()),
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
+            GoRoute(
+                path: '/profile', builder: (_, __) => const ProfileScreen()),
           ]),
         ],
       ),

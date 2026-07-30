@@ -18,7 +18,8 @@ class SectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(Spacing.lg, Spacing.xl, Spacing.lg, Spacing.md),
+      padding: const EdgeInsets.fromLTRB(
+          Spacing.lg, Spacing.xl, Spacing.lg, Spacing.md),
       child: Row(
         children: [
           Expanded(
@@ -109,10 +110,11 @@ class InfoCallout extends StatelessWidget {
           Icon(icon, size: 18, color: color),
           const SizedBox(width: Spacing.md),
           Expanded(
-            child: Text(text, style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
-              height: 1.45,
-            )),
+            child: Text(text,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
+                  height: 1.45,
+                )),
           ),
         ],
       ),

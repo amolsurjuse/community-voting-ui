@@ -1,7 +1,10 @@
 enum EventVisibility {
-  public('Public', 'Searchable and discoverable. Anyone who meets the verification requirement can vote.'),
-  unlisted('Unlisted', 'Hidden from search. Anyone with the link or QR code who meets the verification requirement can vote.'),
-  private('Private', 'Access only through invitation, access code, or organizer approval.');
+  public('Public',
+      'Searchable and discoverable. Anyone who meets the verification requirement can vote.'),
+  unlisted('Unlisted',
+      'Hidden from search. Anyone with the link or QR code who meets the verification requirement can vote.'),
+  private('Private',
+      'Access only through invitation, access code, or organizer approval.');
 
   const EventVisibility(this.label, this.explanation);
   final String label;
@@ -57,7 +60,8 @@ enum VerificationLevel {
 
 enum ResultVisibility {
   live('Live results', 'Results update publicly while voting is open.'),
-  afterVote('After you vote', 'Results are visible once your ballot is accepted.'),
+  afterVote(
+      'After you vote', 'Results are visible once your ballot is accepted.'),
   afterClose('After event closes', 'Results are published when voting ends.'),
   organizerOnly('Organizer only', 'Only the organizer can see results.');
 

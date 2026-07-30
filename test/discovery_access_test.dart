@@ -35,9 +35,11 @@ void main() {
       final ranked = await repo.discover(
         const DiscoverFilters(ballotType: BallotType.rankedChoice),
       );
-      expect(ranked.every(
-        (e) => e.rules.ballotType == BallotType.rankedChoice,
-      ), isTrue);
+      expect(
+          ranked.every(
+            (e) => e.rules.ballotType == BallotType.rankedChoice,
+          ),
+          isTrue);
     });
 
     test('pagination past the end returns an empty page', () async {

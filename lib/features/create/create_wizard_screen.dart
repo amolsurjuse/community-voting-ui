@@ -120,7 +120,10 @@ class CreateWizardScreen extends ConsumerWidget {
               if (state.message != null)
                 Padding(
                   padding: const EdgeInsets.fromLTRB(
-                    Spacing.lg, Spacing.md, Spacing.lg, 0,
+                    Spacing.lg,
+                    Spacing.md,
+                    Spacing.lg,
+                    0,
                   ),
                   child: InfoCallout(
                     text: state.message!,
@@ -195,7 +198,8 @@ class _WizardNav extends StatelessWidget {
       padding: const EdgeInsets.all(Spacing.lg),
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainerLow,
-        border: Border(top: BorderSide(color: theme.colorScheme.outlineVariant)),
+        border:
+            Border(top: BorderSide(color: theme.colorScheme.outlineVariant)),
       ),
       child: Row(
         children: [

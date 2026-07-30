@@ -4,7 +4,8 @@ import 'package:pulsevote/core/routing/deep_link_parser.dart';
 void main() {
   group('Deep link parsing', () {
     test('parses event link', () {
-      final link = DeepLink.tryParse(Uri.parse('https://pulsevote.app/e/riverside-award'));
+      final link = DeepLink.tryParse(
+          Uri.parse('https://pulsevote.app/e/riverside-award'));
       expect(link, isA<EventLink>());
       expect((link as EventLink).publicId, 'riverside-award');
     });

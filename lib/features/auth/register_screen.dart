@@ -50,7 +50,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   Future<void> _submit() async {
     if (!(_formKey.currentState?.validate() ?? false)) return;
     if (!_acceptedTerms) {
-      setState(() => _error = 'Please accept the Terms and Privacy Policy to continue.');
+      setState(() =>
+          _error = 'Please accept the Terms and Privacy Policy to continue.');
       return;
     }
     setState(() {
@@ -133,14 +134,17 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   helperText: 'At least 8 characters',
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscure ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                      _obscure
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
                     ),
                     tooltip: _obscure ? 'Show password' : 'Hide password',
                     onPressed: () => setState(() => _obscure = !_obscure),
                   ),
                 ),
-                validator: (v) =>
-                    (v == null || v.length < 8) ? 'Use at least 8 characters' : null,
+                validator: (v) => (v == null || v.length < 8)
+                    ? 'Use at least 8 characters'
+                    : null,
               ),
               if (_password.text.isNotEmpty) ...[
                 const SizedBox(height: Spacing.sm),
@@ -159,14 +163,18 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
               ),
               if (_error != null) ...[
                 const SizedBox(height: Spacing.sm),
-                InfoCallout(text: _error!, icon: Icons.error_outline, tone: CalloutTone.danger),
+                InfoCallout(
+                    text: _error!,
+                    icon: Icons.error_outline,
+                    tone: CalloutTone.danger),
               ],
               const SizedBox(height: Spacing.xl),
               FilledButton(
                 onPressed: _submitting ? null : _submit,
                 child: _submitting
                     ? const SizedBox(
-                        width: 22, height: 22,
+                        width: 22,
+                        height: 22,
                         child: CircularProgressIndicator(strokeWidth: 2.5),
                       )
                     : const Text('Continue'),
@@ -204,8 +212,10 @@ class _PasswordStrengthBar extends StatelessWidget {
             child: LinearProgressIndicator(
               value: strength,
               minHeight: 6,
-              backgroundColor:
-                  Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.08),
+              backgroundColor: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.08),
               valueColor: AlwaysStoppedAnimation(color),
             ),
           ),

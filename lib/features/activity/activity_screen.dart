@@ -76,14 +76,32 @@ class _ActivityTile extends StatelessWidget {
   final ActivityItem item;
 
   (IconData, Color) get _style => switch (item.kind) {
-        ActivityKind.eventPublished => (Icons.rocket_launch_outlined, AppColors.info),
-        ActivityKind.eventOpened => (Icons.play_circle_outline, AppColors.success),
+        ActivityKind.eventPublished => (
+            Icons.rocket_launch_outlined,
+            AppColors.info
+          ),
+        ActivityKind.eventOpened => (
+            Icons.play_circle_outline,
+            AppColors.success
+          ),
         ActivityKind.closingSoon => (Icons.timer_outlined, AppColors.warning),
         ActivityKind.eventClosed => (Icons.flag_outlined, AppColors.warning),
-        ActivityKind.resultsFinalized => (Icons.emoji_events_outlined, AppColors.amber),
-        ActivityKind.verificationFailures => (Icons.gpp_maybe_outlined, AppColors.warning),
-        ActivityKind.suspiciousActivity => (Icons.gpp_maybe_outlined, AppColors.danger),
-        ActivityKind.exportReady => (Icons.download_done_outlined, AppColors.success),
+        ActivityKind.resultsFinalized => (
+            Icons.emoji_events_outlined,
+            AppColors.amber
+          ),
+        ActivityKind.verificationFailures => (
+            Icons.gpp_maybe_outlined,
+            AppColors.warning
+          ),
+        ActivityKind.suspiciousActivity => (
+            Icons.gpp_maybe_outlined,
+            AppColors.danger
+          ),
+        ActivityKind.exportReady => (
+            Icons.download_done_outlined,
+            AppColors.success
+          ),
       };
 
   @override

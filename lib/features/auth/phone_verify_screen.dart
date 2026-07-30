@@ -123,9 +123,11 @@ class _PhoneVerifyScreenState extends ConsumerState<PhoneVerifyScreen> {
             if (_success)
               _SuccessAnimation(theme: theme)
             else if (!_codeSent) ...[
-              Icon(Icons.sms_outlined, size: 48, color: theme.colorScheme.primary),
+              Icon(Icons.sms_outlined,
+                  size: 48, color: theme.colorScheme.primary),
               const SizedBox(height: Spacing.lg),
-              Text('Add your phone number', style: theme.textTheme.headlineSmall),
+              Text('Add your phone number',
+                  style: theme.textTheme.headlineSmall),
               const SizedBox(height: Spacing.sm),
               Text(
                 'We\'ll text you a one-time code. Phone verification unlocks phone-verified events and helps keep results credible.',
@@ -144,20 +146,25 @@ class _PhoneVerifyScreenState extends ConsumerState<PhoneVerifyScreen> {
               const SizedBox(height: Spacing.lg),
               const InfoCallout(
                 icon: Icons.lock_outline,
-                text: 'Your number is used only for verification and duplicate-ballot '
+                text:
+                    'Your number is used only for verification and duplicate-ballot '
                     'prevention. It is never shown to participants or organizers, '
                     'and never sold or shared.',
               ),
               if (_error != null) ...[
                 const SizedBox(height: Spacing.lg),
-                InfoCallout(text: _error!, icon: Icons.error_outline, tone: CalloutTone.danger),
+                InfoCallout(
+                    text: _error!,
+                    icon: Icons.error_outline,
+                    tone: CalloutTone.danger),
               ],
               const SizedBox(height: Spacing.xl),
               FilledButton(
                 onPressed: _submitting ? null : _sendCode,
                 child: _submitting
                     ? const SizedBox(
-                        width: 22, height: 22,
+                        width: 22,
+                        height: 22,
                         child: CircularProgressIndicator(strokeWidth: 2.5),
                       )
                     : const Text('Send code'),
@@ -165,7 +172,8 @@ class _PhoneVerifyScreenState extends ConsumerState<PhoneVerifyScreen> {
             ] else ...[
               Icon(Icons.sms, size: 48, color: theme.colorScheme.primary),
               const SizedBox(height: Spacing.lg),
-              Text('Enter the code we texted', style: theme.textTheme.headlineSmall),
+              Text('Enter the code we texted',
+                  style: theme.textTheme.headlineSmall),
               const SizedBox(height: Spacing.sm),
               Text(
                 'Sent to $_countryCode ${_phone.text.trim()}',
@@ -180,7 +188,10 @@ class _PhoneVerifyScreenState extends ConsumerState<PhoneVerifyScreen> {
               ),
               if (_error != null) ...[
                 const SizedBox(height: Spacing.lg),
-                InfoCallout(text: _error!, icon: Icons.error_outline, tone: CalloutTone.danger),
+                InfoCallout(
+                    text: _error!,
+                    icon: Icons.error_outline,
+                    tone: CalloutTone.danger),
               ],
               const SizedBox(height: Spacing.lg),
               const InfoCallout(text: MockCredentials.demoHint),
@@ -243,7 +254,8 @@ class _SuccessAnimation extends StatelessWidget {
               color: AppColors.success.withValues(alpha: 0.12),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.verified, color: AppColors.success, size: 60),
+            child:
+                const Icon(Icons.verified, color: AppColors.success, size: 60),
           ),
         ),
         const SizedBox(height: Spacing.lg),

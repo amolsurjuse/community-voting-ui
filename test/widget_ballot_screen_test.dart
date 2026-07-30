@@ -5,7 +5,8 @@ import 'package:pulsevote/core/design/app_theme.dart';
 import 'package:pulsevote/data/seed_data.dart';
 import 'package:pulsevote/features/ballot/ballot_screen.dart';
 
-Widget _app(Widget child, {ThemeMode mode = ThemeMode.light, double scale = 1}) {
+Widget _app(Widget child,
+    {ThemeMode mode = ThemeMode.light, double scale = 1}) {
   return ProviderScope(
     child: MaterialApp(
       theme: AppTheme.light(),
@@ -100,6 +101,7 @@ void main() {
     await _settle(tester);
     expect(find.text('Quick phone check'), findsOneWidget);
     // No candidate list yet.
-    expect(find.text(SeedData.clubElection.candidates.first.name), findsNothing);
+    expect(
+        find.text(SeedData.clubElection.candidates.first.name), findsNothing);
   });
 }

@@ -45,11 +45,13 @@ class SessionController extends Notifier<SessionState> {
       final organizer = await _auth.restoreSession();
       state = organizer == null
           ? const SessionState(phase: SessionPhase.unauthenticated)
-          : SessionState(phase: SessionPhase.authenticated, organizer: organizer);
+          : SessionState(
+              phase: SessionPhase.authenticated, organizer: organizer);
     } catch (_) {
       state = const SessionState(
         phase: SessionPhase.initFailed,
-        error: 'We could not finish setting up the app. Check your connection and retry.',
+        error:
+            'We could not finish setting up the app. Check your connection and retry.',
       );
     }
   }
@@ -66,12 +68,14 @@ class SessionController extends Notifier<SessionState> {
       phone: phone,
       password: password,
     );
-    state = SessionState(phase: SessionPhase.authenticated, organizer: organizer);
+    state =
+        SessionState(phase: SessionPhase.authenticated, organizer: organizer);
   }
 
   Future<void> verifyEmail(String code) async {
     final organizer = await _auth.verifyEmail(code);
-    state = SessionState(phase: SessionPhase.authenticated, organizer: organizer);
+    state =
+        SessionState(phase: SessionPhase.authenticated, organizer: organizer);
   }
 
   Future<void> resendEmailCode() => _auth.resendEmailCode();
@@ -80,7 +84,8 @@ class SessionController extends Notifier<SessionState> {
 
   Future<void> verifyPhoneOtp(String code) async {
     final organizer = await _auth.verifyPhoneOtp(code);
-    state = SessionState(phase: SessionPhase.authenticated, organizer: organizer);
+    state =
+        SessionState(phase: SessionPhase.authenticated, organizer: organizer);
   }
 
   Future<void> signOut() async {

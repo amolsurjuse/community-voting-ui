@@ -28,7 +28,8 @@ class RulesStep extends StatelessWidget {
             padding: EdgeInsets.only(bottom: Spacing.lg),
             child: InfoCallout(
               icon: Icons.lock_outline,
-              text: 'Voting rules are locked while the event is open, so every ballot is counted the same way.',
+              text:
+                  'Voting rules are locked while the event is open, so every ballot is counted the same way.',
             ),
           ),
         Text('How do people vote?', style: theme.textTheme.titleMedium),
@@ -99,7 +100,8 @@ class RulesStep extends StatelessWidget {
           ),
           InfoCallout(
             icon: Icons.functions,
-            text: 'Counting method shown to participants: ${rules.rankedAlgorithm}. '
+            text:
+                'Counting method shown to participants: ${rules.rankedAlgorithm}. '
                 'Tie-breaking: ${rules.tieBreakPolicy}',
           ),
           const SizedBox(height: Spacing.md),
@@ -107,7 +109,8 @@ class RulesStep extends StatelessWidget {
         SwitchListTile(
           contentPadding: EdgeInsets.zero,
           title: const Text('Ballot review before submission'),
-          subtitle: const Text('Participants confirm a summary before submitting.'),
+          subtitle:
+              const Text('Participants confirm a summary before submitting.'),
           value: rules.allowReview,
           onChanged: locked
               ? null
@@ -196,7 +199,8 @@ class _BallotTypeCard extends StatelessWidget {
                               const SizedBox(width: Spacing.sm),
                               Container(
                                 padding: const EdgeInsets.symmetric(
-                                  horizontal: 6, vertical: 2,
+                                  horizontal: 6,
+                                  vertical: 2,
                                 ),
                                 decoration: BoxDecoration(
                                   color: theme.colorScheme.secondary
