@@ -40,22 +40,20 @@ class HttpBallotRepository implements BallotRepository {
         token,
         const {},
       );
-      final response = await _client.post(
-        _baseUri.resolve(
-          '/community-voting/v1/events/${draft.eventId}/ballots',
-        ),
-        headers: {
-          'authorization': 'Bearer $token',
+      final response = await _authorizedPost(
+        '/community-voting/v1/events/${draft.eventId}/ballots',
+        token,
+        {
           'content-type': 'application/json',
           'idempotency-key': idempotencyKey,
         },
-        body: jsonEncode({
+        {
           'credentialId': eligibility['credentialId'],
           'rulesVersion': eligibility['rulesVersion'],
           'candidateVersion': eligibility['candidateVersion'],
           'ballotType': _ballotType(draft.ballotType),
           'candidateIds': draft.selections,
-        }),
+        },
       );
       final body = _body(response);
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -102,13 +100,11 @@ class HttpBallotRepository implements BallotRepository {
     String token,
     Map<String, dynamic> body,
   ) async {
-    final response = await _client.post(
-      _baseUri.resolve(path),
-      headers: {
-        'authorization': 'Bearer $token',
-        'content-type': 'application/json',
-      },
-      body: jsonEncode(body),
+    final response = await _authorizedPost(
+      path,
+      token,
+      const {'content-type': 'application/json'},
+      body,
     );
     final decoded = _body(response);
     if (response.statusCode < 200 || response.statusCode >= 300) {
@@ -128,6 +124,48 @@ class HttpBallotRepository implements BallotRepository {
     if (token == null) {
       throw const RepositoryException('Sign in to cast a ballot.');
     }
+    return token;
+  }
+
+  Future<http.Response> _authorizedPost(
+    String path,
+    String token,
+    Map<String, String> headers,
+    Map<String, dynamic> body,
+  ) async {
+    Future<http.Response> send(String accessToken) => _client.post(
+          _baseUri.resolve(path),
+          headers: {
+            ...headers,
+            'authorization': 'Bearer $accessToken',
+          },
+          body: jsonEncode(body),
+        );
+
+    var response = await send(token);
+    if (response.statusCode != 401) return response;
+    final refreshed = await _refreshAccessToken();
+    if (refreshed == null) return response;
+    response = await send(refreshed);
+    return response;
+  }
+
+  Future<String?> _refreshAccessToken() async {
+    final refresh = await _secureStore.read(SecureKey.organizerRefreshToken);
+    final device = await _secureStore.read(SecureKey.authDeviceId);
+    if (refresh == null || device == null) return null;
+    final response = await _client.post(
+      _baseUri.resolve('/auth/api/auth/refresh'),
+      headers: const {'content-type': 'application/json'},
+      body: jsonEncode({'refreshToken': refresh, 'deviceId': device}),
+    );
+    if (response.statusCode < 200 || response.statusCode >= 300) return null;
+    final body = _body(response);
+    final token = body['accessToken'] as String?;
+    final rotatedRefresh = body['refreshToken'] as String?;
+    if (token == null || rotatedRefresh == null) return null;
+    await _secureStore.write(SecureKey.organizerAuthToken, token);
+    await _secureStore.write(SecureKey.organizerRefreshToken, rotatedRefresh);
     return token;
   }
 

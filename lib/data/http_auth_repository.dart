@@ -25,11 +25,18 @@ class HttpAuthRepository implements AuthRepository {
 
   @override
   Future<Organizer?> restoreSession() async {
-    final token = await _secureStore.read(SecureKey.organizerAuthToken);
+    var token = await _secureStore.read(SecureKey.organizerAuthToken);
     final profile = await _secureStore.read(SecureKey.organizerProfile);
-    if (token == null || profile == null || _isExpired(token)) {
+    if (token == null || profile == null) {
       await _clearAuth();
       return null;
+    }
+    if (_isExpired(token)) {
+      token = await _refreshAccessToken();
+      if (token == null) {
+        await _clearAuth();
+        return null;
+      }
     }
     final roles = _jwtClaims(token)['roles'];
     if (roles is! List || !roles.contains('COMMUNITY_VOTING_USER')) {
@@ -38,6 +45,31 @@ class HttpAuthRepository implements AuthRepository {
     }
     _current = _profileFromJson(jsonDecode(profile) as Map<String, dynamic>);
     return _current;
+  }
+
+  Future<String?> _refreshAccessToken() async {
+    final refresh = await _secureStore.read(SecureKey.organizerRefreshToken);
+    final device = await _secureStore.read(SecureKey.authDeviceId);
+    if (refresh == null || device == null) return null;
+    try {
+      final response = await _client.post(
+        _baseUri.resolve('/auth/api/auth/refresh'),
+        headers: const {'content-type': 'application/json'},
+        body: jsonEncode({'refreshToken': refresh, 'deviceId': device}),
+      );
+      final body = _decode(response);
+      final accessToken = body['accessToken'] as String?;
+      final rotatedRefresh = body['refreshToken'] as String?;
+      if (accessToken == null || rotatedRefresh == null) return null;
+      await _secureStore.write(SecureKey.organizerAuthToken, accessToken);
+      await _secureStore.write(
+        SecureKey.organizerRefreshToken,
+        rotatedRefresh,
+      );
+      return accessToken;
+    } catch (_) {
+      return null;
+    }
   }
 
   @override
