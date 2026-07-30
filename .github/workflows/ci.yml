@@ -29,7 +29,10 @@ jobs:
       # Keep legacy style findings visible while failing on warnings and errors.
       - run: flutter analyze --no-fatal-infos
       - run: flutter test --coverage
-      - run: flutter build apk --debug
+      - run: >-
+          flutter build apk --debug
+          --dart-define=USE_REAL_API=true
+          --dart-define=GATEWAY_BASE_URL=https://api.pulsevote.app
       - uses: actions/upload-artifact@v4
         with:
           name: pulsevote-debug-apk

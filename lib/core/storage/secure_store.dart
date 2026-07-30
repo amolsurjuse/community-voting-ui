@@ -15,6 +15,9 @@ enum SecureKey {
   installationId,
   installationKeyAlias,
   organizerAuthToken,
+  organizerRefreshToken,
+  authDeviceId,
+  organizerProfile,
   verificationSessionToken,
 }
 
