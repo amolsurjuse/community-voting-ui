@@ -50,7 +50,8 @@ void main() {
       expect(result, isA<BallotAlreadyCast>());
     });
 
-    test('idempotent retry with same client token replays original outcome', () {
+    test('idempotent retry with same client token replays original outcome',
+        () {
       final event = SeedData.communityAward;
       final draft = BallotDraft(
         eventId: event.id,

@@ -51,7 +51,8 @@ class CandidatesStep extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: Spacing.lg),
             child: InfoCallout(
               icon: Icons.lock_outline,
-              text: 'Voting has started, so options are locked to keep the ballot fair.',
+              text:
+                  'Voting has started, so options are locked to keep the ballot fair.',
             ),
           ),
         Expanded(
@@ -66,7 +67,10 @@ class CandidatesStep extends StatelessWidget {
                 )
               : ReorderableListView.builder(
                   padding: const EdgeInsets.fromLTRB(
-                    Spacing.lg, 0, Spacing.lg, Spacing.lg,
+                    Spacing.lg,
+                    0,
+                    Spacing.lg,
+                    Spacing.lg,
                   ),
                   itemCount: candidates.length,
                   onReorder: locked
@@ -83,9 +87,11 @@ class CandidatesStep extends StatelessWidget {
                       child: Card(
                         child: ListTile(
                           contentPadding: const EdgeInsets.symmetric(
-                            horizontal: Spacing.md, vertical: Spacing.xs,
+                            horizontal: Spacing.md,
+                            vertical: Spacing.xs,
                           ),
-                          leading: CandidateAvatar(candidate: candidate, size: 44),
+                          leading:
+                              CandidateAvatar(candidate: candidate, size: 44),
                           title: Text(candidate.name,
                               style: theme.textTheme.titleSmall),
                           subtitle: candidate.subtitle.isNotEmpty
@@ -93,7 +99,9 @@ class CandidatesStep extends StatelessWidget {
                                   maxLines: 1, overflow: TextOverflow.ellipsis)
                               : null,
                           onTap: () => _showEditor(
-                            context, controller, existing: candidate,
+                            context,
+                            controller,
+                            existing: candidate,
                           ),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -104,7 +112,8 @@ class CandidatesStep extends StatelessWidget {
                                   switch (action) {
                                     case 'edit':
                                       _showEditor(
-                                        context, controller,
+                                        context,
+                                        controller,
                                         existing: candidate,
                                       );
                                     case 'duplicate':
@@ -116,14 +125,17 @@ class CandidatesStep extends StatelessWidget {
                                 },
                                 itemBuilder: (_) => [
                                   const PopupMenuItem(
-                                    value: 'edit', child: Text('Edit'),
+                                    value: 'edit',
+                                    child: Text('Edit'),
                                   ),
                                   const PopupMenuItem(
-                                    value: 'duplicate', child: Text('Duplicate'),
+                                    value: 'duplicate',
+                                    child: Text('Duplicate'),
                                   ),
                                   if (!locked)
                                     const PopupMenuItem(
-                                      value: 'delete', child: Text('Delete'),
+                                      value: 'delete',
+                                      child: Text('Delete'),
                                     ),
                                 ],
                               ),
@@ -244,13 +256,15 @@ class _CandidateEditorState extends State<_CandidateEditor> {
             controller: _notes,
             decoration: const InputDecoration(
               labelText: 'Private notes (optional)',
-              helperText: 'Only you can see these — never shown to participants',
+              helperText:
+                  'Only you can see these — never shown to participants',
             ),
           ),
           const SizedBox(height: Spacing.xl),
           FilledButton(
             onPressed: _save,
-            child: Text(widget.existing == null ? 'Add option' : 'Save changes'),
+            child:
+                Text(widget.existing == null ? 'Add option' : 'Save changes'),
           ),
         ],
       ),

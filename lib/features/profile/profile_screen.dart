@@ -230,7 +230,13 @@ class ProfileScreen extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (final lang in const ['English', 'Spanish', 'French', 'German', 'Hindi'])
+          for (final lang in const [
+            'English',
+            'Spanish',
+            'French',
+            'German',
+            'Hindi'
+          ])
             ListTile(
               title: Text(lang),
               trailing: lang == current ? const Icon(Icons.check) : null,

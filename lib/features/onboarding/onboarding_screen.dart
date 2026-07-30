@@ -78,7 +78,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 itemBuilder: (context, i) {
                   final page = _pages[i];
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Spacing.xxl),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: Spacing.xxl),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

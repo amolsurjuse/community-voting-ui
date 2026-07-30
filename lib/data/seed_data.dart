@@ -28,7 +28,8 @@ class SeedData {
     id: 'ev_award',
     publicId: 'riverside-award',
     title: 'Riverside Community Star Award 2026',
-    shortDescription: 'Celebrate the neighbor who made Riverside shine this year.',
+    shortDescription:
+        'Celebrate the neighbor who made Riverside shine this year.',
     longDescription:
         'Every year, Riverside residents nominate neighbors who went above and '
         'beyond — organizing cleanups, running the food pantry, coaching kids. '
@@ -48,11 +49,31 @@ class SeedData {
     endsAt: _now.add(const Duration(days: 4, hours: 6)),
     totalBallots: 312,
     candidates: _candidates([
-      ('Maya Okafor', 'Food pantry coordinator', 'Runs the Tuesday pantry that served 4,000 meals this year and started the weekend delivery program for seniors.'),
-      ('Sam Delgado', 'Youth soccer coach', 'Coached three age groups for free all season and organized the equipment drive for new families.'),
-      ('Priya Nair', 'Park cleanup organizer', 'Led 14 riverbank cleanups and got the city to install new recycling stations along the trail.'),
-      ('Tom Whitfield', 'Repair café founder', 'Fixed over 200 household items at the monthly repair café, keeping them out of landfill.'),
-      ('Lena Kowalski', 'Community garden lead', 'Expanded the garden to 40 plots and donated surplus produce to the pantry every week.'),
+      (
+        'Maya Okafor',
+        'Food pantry coordinator',
+        'Runs the Tuesday pantry that served 4,000 meals this year and started the weekend delivery program for seniors.'
+      ),
+      (
+        'Sam Delgado',
+        'Youth soccer coach',
+        'Coached three age groups for free all season and organized the equipment drive for new families.'
+      ),
+      (
+        'Priya Nair',
+        'Park cleanup organizer',
+        'Led 14 riverbank cleanups and got the city to install new recycling stations along the trail.'
+      ),
+      (
+        'Tom Whitfield',
+        'Repair café founder',
+        'Fixed over 200 household items at the monthly repair café, keeping them out of landfill.'
+      ),
+      (
+        'Lena Kowalski',
+        'Community garden lead',
+        'Expanded the garden to 40 plots and donated surplus produce to the pantry every week.'
+      ),
     ]),
     createdAt: _now.subtract(const Duration(days: 10)),
   );
@@ -62,7 +83,8 @@ class SeedData {
     id: 'ev_offsite',
     publicId: 'aster-offsite',
     title: 'Aster Labs Offsite: Pick Our Activities',
-    shortDescription: 'Choose up to three activities for the September team offsite.',
+    shortDescription:
+        'Choose up to three activities for the September team offsite.',
     longDescription:
         'We have budget for three group activities at the Bend offsite '
         '(Sept 18–20). Pick the three you would actually join. Results guide '
@@ -84,12 +106,36 @@ class SeedData {
     endsAt: _now.add(const Duration(days: 6)),
     totalBallots: 47,
     candidates: _candidates([
-      ('River rafting', 'Half day · Deschutes River', 'Guided class II–III rafting with all gear provided. No experience needed.'),
-      ('Cooking class', 'Evening · Downtown Bend', 'Hands-on pasta workshop with a local chef, dinner included.'),
-      ('Trail hike + picnic', 'Morning · Smith Rock', 'Moderate 5-mile loop with a catered picnic at the viewpoint.'),
-      ('Escape rooms', 'Evening · Teams of 6', 'Three parallel rooms, mixed-team assignments to meet new people.'),
-      ('Volunteer afternoon', 'Half day · Bend Food Project', 'Sort and pack food boxes as a team for local families.'),
-      ('Board game night', 'Evening · Lodge', 'Casual games, snacks, and a bracket for the competitive.'),
+      (
+        'River rafting',
+        'Half day · Deschutes River',
+        'Guided class II–III rafting with all gear provided. No experience needed.'
+      ),
+      (
+        'Cooking class',
+        'Evening · Downtown Bend',
+        'Hands-on pasta workshop with a local chef, dinner included.'
+      ),
+      (
+        'Trail hike + picnic',
+        'Morning · Smith Rock',
+        'Moderate 5-mile loop with a catered picnic at the viewpoint.'
+      ),
+      (
+        'Escape rooms',
+        'Evening · Teams of 6',
+        'Three parallel rooms, mixed-team assignments to meet new people.'
+      ),
+      (
+        'Volunteer afternoon',
+        'Half day · Bend Food Project',
+        'Sort and pack food boxes as a team for local families.'
+      ),
+      (
+        'Board game night',
+        'Evening · Lodge',
+        'Casual games, snacks, and a bracket for the competitive.'
+      ),
     ]),
     createdAt: _now.subtract(const Duration(days: 5)),
   );
@@ -119,9 +165,21 @@ class SeedData {
     endsAt: _now.add(const Duration(days: 2, hours: 3)),
     totalBallots: 128,
     candidates: _candidates([
-      ('Dana Kim', 'Current vice president', 'Six years in the club. Wants to double beginner rides and secure a permanent clubhouse lease.'),
-      ('Marcus Bell', 'Ride captain', 'Focused on safety training, better route signage, and a mentorship pairing for new riders.'),
-      ('Aisha Thompson', 'Treasurer, 3 years', 'Plans transparent budgeting, gear subsidies for youth members, and two charity century rides.'),
+      (
+        'Dana Kim',
+        'Current vice president',
+        'Six years in the club. Wants to double beginner rides and secure a permanent clubhouse lease.'
+      ),
+      (
+        'Marcus Bell',
+        'Ride captain',
+        'Focused on safety training, better route signage, and a mentorship pairing for new riders.'
+      ),
+      (
+        'Aisha Thompson',
+        'Treasurer, 3 years',
+        'Plans transparent budgeting, gear subsidies for youth members, and two charity century rides.'
+      ),
     ]),
     createdAt: _now.subtract(const Duration(days: 14)),
   );
@@ -154,11 +212,31 @@ class SeedData {
     endsAt: _now.add(const Duration(days: 9)),
     totalBallots: 289,
     candidates: _candidates([
-      ('Tidal Bloom', 'by R. Fontaine', 'Oversized native wildflowers dissolving into ocean waves, painted in a saturated dawn palette.'),
-      ('Shipwrights', 'by J. Achebe', 'A tribute to the harbor\'s boatbuilding era, weaving portraits of dockworkers into rigging lines.'),
-      ('Migration', 'by K. Sato', 'A flock of pelicans crossing an abstract tide chart of the bay, using reflective paint for dusk.'),
-      ('Neighborhood Quilt', 'by D. Reyes', 'Geometric panels contributed by 30 local families, unified by a shared color thread.'),
-      ('Under the Surface', 'by M. Laurent', 'A cutaway of harbor water showing kelp, seals, and the pilings of the old pier.'),
+      (
+        'Tidal Bloom',
+        'by R. Fontaine',
+        'Oversized native wildflowers dissolving into ocean waves, painted in a saturated dawn palette.'
+      ),
+      (
+        'Shipwrights',
+        'by J. Achebe',
+        'A tribute to the harbor\'s boatbuilding era, weaving portraits of dockworkers into rigging lines.'
+      ),
+      (
+        'Migration',
+        'by K. Sato',
+        'A flock of pelicans crossing an abstract tide chart of the bay, using reflective paint for dusk.'
+      ),
+      (
+        'Neighborhood Quilt',
+        'by D. Reyes',
+        'Geometric panels contributed by 30 local families, unified by a shared color thread.'
+      ),
+      (
+        'Under the Surface',
+        'by M. Laurent',
+        'A cutaway of harbor water showing kelp, seals, and the pilings of the old pier.'
+      ),
     ]),
     createdAt: _now.subtract(const Duration(days: 8)),
   );
@@ -185,10 +263,26 @@ class SeedData {
     endsAt: _now.subtract(const Duration(days: 12)),
     totalBallots: 63,
     candidates: _candidates([
-      ('The Lantern Keepers', 'Historical fiction', 'Three generations of lighthouse keepers on a remote Scottish island.'),
-      ('Glass Cities', 'Sci-fi', 'A climate architect rebuilds a flooded metropolis from memory.'),
-      ('What the River Knows', 'Mystery', 'A retired detective returns to the town that never solved its only cold case.'),
-      ('Salt & Smoke', 'Memoir', 'A chef traces her family across three continents through ten recipes.'),
+      (
+        'The Lantern Keepers',
+        'Historical fiction',
+        'Three generations of lighthouse keepers on a remote Scottish island.'
+      ),
+      (
+        'Glass Cities',
+        'Sci-fi',
+        'A climate architect rebuilds a flooded metropolis from memory.'
+      ),
+      (
+        'What the River Knows',
+        'Mystery',
+        'A retired detective returns to the town that never solved its only cold case.'
+      ),
+      (
+        'Salt & Smoke',
+        'Memoir',
+        'A chef traces her family across three continents through ten recipes.'
+      ),
     ]),
     createdAt: _now.subtract(const Duration(days: 45)),
   );
@@ -209,8 +303,16 @@ class SeedData {
     resultVisibility: ResultVisibility.afterClose,
     status: EventStatus.draft,
     candidates: _candidates([
-      ('Team Nimbus', 'Weather-aware standup bot', 'Rearranges standup order based on who is blocked.'),
-      ('Team Quokka', 'Meeting cost ticker', 'Live counter of what each meeting costs as it runs.'),
+      (
+        'Team Nimbus',
+        'Weather-aware standup bot',
+        'Rearranges standup order based on who is blocked.'
+      ),
+      (
+        'Team Quokka',
+        'Meeting cost ticker',
+        'Live counter of what each meeting costs as it runs.'
+      ),
     ]),
     createdAt: _now.subtract(const Duration(days: 1)),
   );
@@ -241,7 +343,8 @@ class SeedData {
           id: 'act_2',
           kind: ActivityKind.suspiciousActivity,
           title: 'Unusual voting pattern on Star Award',
-          body: '9 ballots arrived from similar installations within one minute. '
+          body:
+              '9 ballots arrived from similar installations within one minute. '
               'Review the indicators in analytics.',
           occurredAt: _now.subtract(const Duration(hours: 7)),
           eventId: communityAward.id,

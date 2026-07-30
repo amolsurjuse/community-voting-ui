@@ -187,7 +187,9 @@ class MockBackend {
 
   String _receiptCode() {
     const alphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
-    final code = List.generate(8, (_) => alphabet[_random.nextInt(alphabet.length)]).join();
+    final code =
+        List.generate(8, (_) => alphabet[_random.nextInt(alphabet.length)])
+            .join();
     return '${code.substring(0, 4)}-${code.substring(4)}';
   }
 
@@ -223,7 +225,8 @@ class MockBackend {
     final hours = 24;
     final buckets = List<int>.generate(hours, (i) {
       final weight = 0.4 + 0.6 * sin(pi * i / hours);
-      return max(0, (total / hours * weight * (0.6 + _random.nextDouble())).round());
+      return max(
+          0, (total / hours * weight * (0.6 + _random.nextDouble())).round());
     });
     final started = (total * 1.35).round();
     final completed = (total * 1.12).round();
@@ -240,7 +243,8 @@ class MockBackend {
               'Repeated verification failures from one network',
             ]
           : const [],
-      platformSplit: total >= 50 ? const {'iOS': 0.58, 'Android': 0.42} : const {},
+      platformSplit:
+          total >= 50 ? const {'iOS': 0.58, 'Android': 0.42} : const {},
     );
   }
 
@@ -259,5 +263,6 @@ class MockCredentials {
   static bool isValidOtp(String code) =>
       RegExp(r'^\d{6}$').hasMatch(code) && int.parse(code[5]).isEven;
 
-  static const demoHint = 'Development build: any 6-digit code ending in an even digit works, e.g. 111112.';
+  static const demoHint =
+      'Development build: any 6-digit code ending in an even digit works, e.g. 111112.';
 }

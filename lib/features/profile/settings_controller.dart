@@ -34,8 +34,7 @@ class SettingsController extends Notifier<SettingsState> {
   @override
   SettingsState build() => const SettingsState();
 
-  void setThemeMode(ThemeMode mode) =>
-      state = state.copyWith(themeMode: mode);
+  void setThemeMode(ThemeMode mode) => state = state.copyWith(themeMode: mode);
 
   void completeOnboarding() => state = state.copyWith(seenOnboarding: true);
 

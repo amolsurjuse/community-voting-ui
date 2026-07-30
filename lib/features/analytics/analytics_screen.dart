@@ -62,9 +62,8 @@ class _AnalyticsBody extends ConsumerWidget {
             const SizedBox(width: Spacing.md),
             _BigStat(
               label: 'Verification rate',
-              value: Formatters.percent(analytics.verificationCompletionRate
-                  .clamp(0, 1)
-                  .toDouble()),
+              value: Formatters.percent(
+                  analytics.verificationCompletionRate.clamp(0, 1).toDouble()),
               icon: Icons.verified_user_outlined,
             ),
           ],
@@ -136,8 +135,8 @@ class _AnalyticsBody extends ConsumerWidget {
                       child: LinearProgressIndicator(
                         value: entry.value,
                         minHeight: 8,
-                        backgroundColor: theme.colorScheme.onSurface
-                            .withValues(alpha: 0.06),
+                        backgroundColor:
+                            theme.colorScheme.onSurface.withValues(alpha: 0.06),
                       ),
                     ),
                   ),
@@ -173,7 +172,8 @@ class _AnalyticsBody extends ConsumerWidget {
         const SizedBox(height: Spacing.lg),
         const InfoCallout(
           icon: Icons.lock_outline,
-          text: 'Analytics are aggregated. Individual participants and their ballot selections are never shown.',
+          text:
+              'Analytics are aggregated. Individual participants and their ballot selections are never shown.',
         ),
         const SizedBox(height: Spacing.xl),
       ],

@@ -243,7 +243,8 @@ class BallotFlowController extends FamilyNotifier<BallotFlowState, String> {
       case BallotVerificationExpired():
         state = state.copyWith(
           phase: BallotPhase.verificationExpired,
-          message: 'Your verification session expired. Verify again to continue — '
+          message:
+              'Your verification session expired. Verify again to continue — '
               'your selections are saved.',
         );
       case BallotInvalid(:final reason):

@@ -71,7 +71,8 @@ class EventCard extends StatelessWidget {
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         if (showStatus) StatusBadge(status: event.status),
-                        VerificationBadge(level: event.verificationLevel, compact: true),
+                        VerificationBadge(
+                            level: event.verificationLevel, compact: true),
                         Text(
                           event.isClosed
                               ? '${Formatters.compactCount(event.totalBallots)} ballots'

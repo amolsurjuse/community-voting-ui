@@ -37,7 +37,8 @@ class EventDetailsScreen extends ConsumerWidget {
     final asyncEvent = ref.watch(eventByPublicIdProvider(publicId));
     return Scaffold(
       body: asyncEvent.when(
-        loading: () => const SafeArea(child: SkeletonList(items: 4, itemHeight: 120)),
+        loading: () =>
+            const SafeArea(child: SkeletonList(items: 4, itemHeight: 120)),
         error: (_, __) => SafeArea(
           child: ErrorPanel(
             message: 'We could not load this event. Check your connection.',
@@ -142,7 +143,8 @@ class _EventBody extends ConsumerWidget {
                   ),
                   if (event.shortDescription.isNotEmpty) ...[
                     const SizedBox(height: Spacing.lg),
-                    Text(event.shortDescription, style: theme.textTheme.bodyLarge),
+                    Text(event.shortDescription,
+                        style: theme.textTheme.bodyLarge),
                   ],
                   if (event.longDescription.isNotEmpty) ...[
                     const SizedBox(height: Spacing.sm),
@@ -218,7 +220,8 @@ class _EventBody extends ConsumerWidget {
     ).withVoteBar(context, event);
   }
 
-  static String _rulesSummary(VotingEvent event) => switch (event.rules.ballotType) {
+  static String _rulesSummary(VotingEvent event) =>
+      switch (event.rules.ballotType) {
         BallotType.singleChoice => 'pick one',
         BallotType.multipleChoice =>
           'pick ${event.rules.minSelections}–${event.rules.maxSelections}',
@@ -264,7 +267,8 @@ class _VoteBar extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceContainerLow,
-        border: Border(top: BorderSide(color: theme.colorScheme.outlineVariant)),
+        border:
+            Border(top: BorderSide(color: theme.colorScheme.outlineVariant)),
       ),
       child: Row(
         children: [
@@ -333,7 +337,8 @@ class _CandidatePreviewCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
+              Icon(Icons.chevron_right,
+                  color: theme.colorScheme.onSurfaceVariant),
             ],
           ),
         ),

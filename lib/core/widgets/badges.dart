@@ -5,7 +5,8 @@ import '../design/tokens.dart';
 
 /// Pill badge communicating an event's verification level.
 class VerificationBadge extends StatelessWidget {
-  const VerificationBadge({super.key, required this.level, this.compact = false});
+  const VerificationBadge(
+      {super.key, required this.level, this.compact = false});
 
   final VerificationLevel level;
   final bool compact;
@@ -63,9 +64,17 @@ class StatusBadge extends StatelessWidget {
     final (label, color, icon) = switch (status) {
       EventStatus.draft => ('Draft', AppColors.inkMuted, Icons.edit_outlined),
       EventStatus.scheduled => ('Scheduled', AppColors.info, Icons.schedule),
-      EventStatus.open => ('Voting open', AppColors.success, Icons.play_circle_outline),
+      EventStatus.open => (
+          'Voting open',
+          AppColors.success,
+          Icons.play_circle_outline
+        ),
       EventStatus.closed => ('Closed', AppColors.warning, Icons.flag_outlined),
-      EventStatus.archived => ('Archived', AppColors.inkMuted, Icons.inventory_2_outlined),
+      EventStatus.archived => (
+          'Archived',
+          AppColors.inkMuted,
+          Icons.inventory_2_outlined
+        ),
     };
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: Spacing.sm, vertical: 4),

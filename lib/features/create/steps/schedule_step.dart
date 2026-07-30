@@ -8,7 +8,8 @@ import '../create_wizard_controller.dart';
 
 /// Step 5: start/end times and result visibility.
 class ScheduleStep extends StatelessWidget {
-  const ScheduleStep({super.key, required this.state, required this.controller});
+  const ScheduleStep(
+      {super.key, required this.state, required this.controller});
 
   final WizardState state;
   final CreateWizardController controller;
@@ -79,7 +80,8 @@ class ScheduleStep extends StatelessWidget {
             child: InfoCallout(
               icon: Icons.hourglass_empty,
               tone: CalloutTone.warning,
-              text: 'Without an end date this event runs indefinitely until you '
+              text:
+                  'Without an end date this event runs indefinitely until you '
                   'close it. Participants will see "no deadline", which can '
                   'reduce urgency to vote.',
             ),
@@ -172,8 +174,11 @@ class _DateTimeTile extends StatelessWidget {
           initialTime: TimeOfDay.fromDateTime(value),
         );
         onChanged(DateTime(
-          date.year, date.month, date.day,
-          time?.hour ?? value.hour, time?.minute ?? value.minute,
+          date.year,
+          date.month,
+          date.day,
+          time?.hour ?? value.hour,
+          time?.minute ?? value.minute,
         ));
       },
     );

@@ -86,7 +86,8 @@ class _ManageBody extends ConsumerWidget {
             itemBuilder: (_) => [
               const PopupMenuItem(value: 'duplicate', child: Text('Duplicate')),
               if (event.isOpen)
-                const PopupMenuItem(value: 'close', child: Text('Close voting')),
+                const PopupMenuItem(
+                    value: 'close', child: Text('Close voting')),
               if (event.isClosed)
                 const PopupMenuItem(value: 'archive', child: Text('Archive')),
             ],
@@ -113,7 +114,8 @@ class _ManageBody extends ConsumerWidget {
                     children: [
                       StatusBadge(status: event.status),
                       VerificationBadge(
-                        level: event.verificationLevel, compact: true,
+                        level: event.verificationLevel,
+                        compact: true,
                       ),
                       VisibilityBadge(visibility: event.visibility),
                     ],
@@ -173,8 +175,7 @@ class _ManageBody extends ConsumerWidget {
             ),
             const SizedBox(height: Spacing.md),
             OutlinedButton.icon(
-              onPressed: () =>
-                  context.push('/manage/${event.id}/analytics'),
+              onPressed: () => context.push('/manage/${event.id}/analytics'),
               icon: const Icon(Icons.insights_outlined),
               label: const Text('View analytics'),
             ),

@@ -64,7 +64,8 @@ class AccessStep extends StatelessWidget {
             draft.verificationLevel == VerificationLevel.verifiedInstall)
           const InfoCallout(
             icon: Icons.info_outline,
-            text: 'One ballot is allowed per verified app installation for this '
+            text:
+                'One ballot is allowed per verified app installation for this '
                 'event. This does not guarantee one ballot per individual person.',
           ),
       ],

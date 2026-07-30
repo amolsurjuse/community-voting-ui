@@ -59,7 +59,10 @@ class HomeScreen extends ConsumerWidget {
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(
-                        Spacing.lg, Spacing.xl, Spacing.lg, 0,
+                        Spacing.lg,
+                        Spacing.xl,
+                        Spacing.lg,
+                        0,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +113,8 @@ class HomeScreen extends ConsumerWidget {
                     const _Header('Recently completed'),
                     _EventSliver(events: closed),
                   ],
-                  const SliverToBoxAdapter(child: SizedBox(height: Spacing.xxl)),
+                  const SliverToBoxAdapter(
+                      child: SizedBox(height: Spacing.xxl)),
                 ],
               );
             },
@@ -179,7 +183,8 @@ class _StatsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        _StatCard(label: 'Live events', value: '$openCount', icon: Icons.podcasts),
+        _StatCard(
+            label: 'Live events', value: '$openCount', icon: Icons.podcasts),
         const SizedBox(width: Spacing.md),
         _StatCard(
           label: 'Ballots',
@@ -187,7 +192,8 @@ class _StatsRow extends StatelessWidget {
           icon: Icons.how_to_vote_outlined,
         ),
         const SizedBox(width: Spacing.md),
-        _StatCard(label: 'Drafts', value: '$draftCount', icon: Icons.edit_outlined),
+        _StatCard(
+            label: 'Drafts', value: '$draftCount', icon: Icons.edit_outlined),
       ],
     );
   }
@@ -251,7 +257,8 @@ class _SignedOutHome extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(Corners.xl),
                 ),
-                child: const Icon(Icons.how_to_vote, color: Colors.white, size: 48),
+                child: const Icon(Icons.how_to_vote,
+                    color: Colors.white, size: 48),
               ),
               const SizedBox(height: Spacing.xl),
               Text(

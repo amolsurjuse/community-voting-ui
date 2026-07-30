@@ -9,7 +9,8 @@ void main() {
 
     test('rejects empty ballot', () {
       const draft = BallotDraft(
-        eventId: 'e1', ballotType: BallotType.singleChoice,
+        eventId: 'e1',
+        ballotType: BallotType.singleChoice,
       );
       expect(draft.validate(rules, 5).isValid, isFalse);
     });

@@ -13,7 +13,8 @@ class VotingRules {
     this.allowReview = true,
     this.allowChangeBeforeSubmit = true,
     this.rankedAlgorithm = 'Instant runoff (single transferable vote)',
-    this.tieBreakPolicy = 'Ties are broken by earliest-round support, then by random draw.',
+    this.tieBreakPolicy =
+        'Ties are broken by earliest-round support, then by random draw.',
   });
 
   final BallotType ballotType;

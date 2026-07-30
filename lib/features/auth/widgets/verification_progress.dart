@@ -14,7 +14,8 @@ class VerificationProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Semantics(
-      label: 'Step ${currentStep + 1} of ${_steps.length}: ${_steps[currentStep]}',
+      label:
+          'Step ${currentStep + 1} of ${_steps.length}: ${_steps[currentStep]}',
       child: Row(
         children: [
           for (var i = 0; i < _steps.length; i++) ...[
@@ -23,9 +24,8 @@ class VerificationProgress extends StatelessWidget {
                 child: Container(
                   height: 2,
                   margin: const EdgeInsets.symmetric(horizontal: Spacing.sm),
-                  color: i <= currentStep
-                      ? scheme.primary
-                      : scheme.outlineVariant,
+                  color:
+                      i <= currentStep ? scheme.primary : scheme.outlineVariant,
                 ),
               ),
             Column(
@@ -51,7 +51,10 @@ class VerificationProgress extends StatelessWidget {
                       : Center(
                           child: Text(
                             '${i + 1}',
-                            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium
+                                ?.copyWith(
                                   color: i == currentStep
                                       ? scheme.primary
                                       : scheme.onSurfaceVariant,

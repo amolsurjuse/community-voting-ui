@@ -52,7 +52,8 @@ class _CandidateSheet extends StatelessWidget {
                   children: [
                     Text(candidate.name, style: theme.textTheme.headlineSmall),
                     if (candidate.subtitle.isNotEmpty)
-                      Text(candidate.subtitle, style: theme.textTheme.bodySmall),
+                      Text(candidate.subtitle,
+                          style: theme.textTheme.bodySmall),
                     if (candidate.organization.isNotEmpty)
                       Text(
                         candidate.organization,

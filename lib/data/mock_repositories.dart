@@ -48,7 +48,8 @@ class MockAuthRepository implements AuthRepository {
     );
     _backend.currentOrganizer = organizer;
     _backend.pendingEmailCode = '000000'; // simulated email delivery
-    await _secureStore.write(SecureKey.organizerAuthToken, 'mock-token-${organizer.id}');
+    await _secureStore.write(
+        SecureKey.organizerAuthToken, 'mock-token-${organizer.id}');
     return organizer;
   }
 
@@ -62,9 +63,11 @@ class MockAuthRepository implements AuthRepository {
   Future<Organizer> verifyEmail(String code) async {
     await Future<void>.delayed(_latency);
     final organizer = _backend.currentOrganizer;
-    if (organizer == null) throw const RepositoryException('Session expired. Sign in again.');
+    if (organizer == null)
+      throw const RepositoryException('Session expired. Sign in again.');
     if (!MockCredentials.isValidOtp(code)) {
-      throw const RepositoryException('That code is not valid. Check the latest email and try again.');
+      throw const RepositoryException(
+          'That code is not valid. Check the latest email and try again.');
     }
     return _backend.currentOrganizer = organizer.copyWith(emailVerified: true);
   }
@@ -83,9 +86,11 @@ class MockAuthRepository implements AuthRepository {
   Future<Organizer> verifyPhoneOtp(String code) async {
     await Future<void>.delayed(_latency);
     final organizer = _backend.currentOrganizer;
-    if (organizer == null) throw const RepositoryException('Session expired. Sign in again.');
+    if (organizer == null)
+      throw const RepositoryException('Session expired. Sign in again.');
     if (!MockCredentials.isValidOtp(code)) {
-      throw const RepositoryException('That code did not match. Try again or resend.');
+      throw const RepositoryException(
+          'That code did not match. Try again or resend.');
     }
     return _backend.currentOrganizer = organizer.copyWith(phoneVerified: true);
   }
@@ -116,8 +121,7 @@ class MockEventRepository implements EventRepository {
   @override
   Future<VotingEvent?> getByPublicId(String publicId) async {
     await Future<void>.delayed(_latency);
-    final matches =
-        _backend.events.values.where((e) => e.publicId == publicId);
+    final matches = _backend.events.values.where((e) => e.publicId == publicId);
     return matches.isEmpty ? null : matches.first;
   }
 
@@ -133,7 +137,8 @@ class MockEventRepository implements EventRepository {
     await Future<void>.delayed(_latency);
     final event = _require(eventId);
     if (event.activeCandidates.length < 2) {
-      throw const RepositoryException('Add at least two options before publishing.');
+      throw const RepositoryException(
+          'Add at least two options before publishing.');
     }
     final now = DateTime.now();
     final scheduled = event.startsAt != null && event.startsAt!.isAfter(now);
@@ -167,7 +172,8 @@ class MockEventRepository implements EventRepository {
       id: 'act_close_${DateTime.now().millisecondsSinceEpoch}',
       kind: ActivityKind.eventClosed,
       title: '${closed.title} has closed',
-      body: '${closed.totalBallots} ballots were accepted. Results are being finalized.',
+      body:
+          '${closed.totalBallots} ballots were accepted. Results are being finalized.',
       occurredAt: DateTime.now(),
       eventId: closed.id,
     ));
@@ -211,13 +217,15 @@ class MockEventRepository implements EventRepository {
   }
 
   @override
-  Future<List<VotingEvent>> discover(DiscoverFilters filters, {int page = 0}) async {
+  Future<List<VotingEvent>> discover(DiscoverFilters filters,
+      {int page = 0}) async {
     await Future<void>.delayed(_latency);
     final query = filters.query.trim().toLowerCase();
     final results = _backend.events.values.where((e) {
       if (e.visibility != EventVisibility.public) return false;
       if (e.isDraft) return false;
-      if (filters.category != null && e.category != filters.category) return false;
+      if (filters.category != null && e.category != filters.category)
+        return false;
       if (filters.verificationLevel != null &&
           e.verificationLevel != filters.verificationLevel) {
         return false;

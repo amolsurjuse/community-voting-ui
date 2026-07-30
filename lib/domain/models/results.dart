@@ -69,7 +69,10 @@ class ResultsSnapshot {
     if (tallies.isEmpty || totalBallots == 0) return const [];
     final top = sorted.first.votes;
     if (top == 0) return const [];
-    return sorted.where((t) => t.votes == top).map((t) => t.candidateId).toList();
+    return sorted
+        .where((t) => t.votes == top)
+        .map((t) => t.candidateId)
+        .toList();
   }
 
   bool get isTie => leaders.length > 1;

@@ -109,7 +109,8 @@ class ConfirmationScreen extends ConsumerWidget {
             const SizedBox(height: Spacing.lg),
             const InfoCallout(
               icon: Icons.lock_outline,
-              text: 'This receipt confirms your ballot was accepted. It does not '
+              text:
+                  'This receipt confirms your ballot was accepted. It does not '
                   'reveal your selections and cannot be linked back to them.',
             ),
             const SizedBox(height: Spacing.xl),

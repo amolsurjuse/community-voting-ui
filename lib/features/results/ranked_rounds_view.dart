@@ -9,7 +9,8 @@ import '../../domain/models/results.dart';
 /// Round-by-round instant-runoff visualization: eliminations, transfers,
 /// majority threshold and winner, with an expandable explanation.
 class RankedRoundsView extends StatelessWidget {
-  const RankedRoundsView({super.key, required this.event, required this.snapshot});
+  const RankedRoundsView(
+      {super.key, required this.event, required this.snapshot});
 
   final VotingEvent event;
   final ResultsSnapshot snapshot;

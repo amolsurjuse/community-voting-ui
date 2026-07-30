@@ -71,7 +71,8 @@ class RankedChoiceCounter {
         tallies: tallies,
         eliminatedCandidateId: lowest.candidateId,
         transferredVotes: transferred,
-        note: 'Lowest candidate eliminated; $transferred ballots moved to their next choice.',
+        note:
+            'Lowest candidate eliminated; $transferred ballots moved to their next choice.',
       ));
       round++;
       if (round > ids.length + 1) break; // safety guard

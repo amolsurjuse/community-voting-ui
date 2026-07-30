@@ -67,8 +67,7 @@ class CreateWizardController extends FamilyNotifier<WizardState, String> {
   @override
   WizardState build(String eventId) {
     if (eventId.isNotEmpty) {
-      final existing =
-          ref.read(mockBackendProvider).events[eventId];
+      final existing = ref.read(mockBackendProvider).events[eventId];
       if (existing != null) return WizardState(draft: existing);
     }
     return WizardState(draft: _newDraft());
@@ -114,7 +113,8 @@ class CreateWizardController extends FamilyNotifier<WizardState, String> {
 
   // -- Candidates -----------------------------------------------------------
 
-  void addCandidate({required String name, String subtitle = '', String description = ''}) {
+  void addCandidate(
+      {required String name, String subtitle = '', String description = ''}) {
     final candidates = List<Candidate>.of(state.draft.candidates);
     candidates.add(Candidate(
       id: 'c_${DateTime.now().microsecondsSinceEpoch}',
@@ -137,8 +137,7 @@ class CreateWizardController extends FamilyNotifier<WizardState, String> {
 
   void removeCandidate(String id) {
     if (state.settingsLocked) return; // no deletion after voting starts
-    final candidates =
-        state.draft.candidates.where((c) => c.id != id).toList();
+    final candidates = state.draft.candidates.where((c) => c.id != id).toList();
     updateDraft(state.draft.copyWith(candidates: _reindex(candidates)));
   }
 

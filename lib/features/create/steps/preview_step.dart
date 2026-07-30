@@ -127,21 +127,23 @@ class PreviewStep extends StatelessWidget {
             child: InfoCallout(
               tone: CalloutTone.warning,
               icon: Icons.hourglass_empty,
-              text: 'No end date set — this event will run until you close it manually.',
+              text:
+                  'No end date set — this event will run until you close it manually.',
             ),
           ),
         const SizedBox(height: Spacing.xl),
         FilledButton.icon(
-          onPressed: state.readyToPublish &&
-                  state.status != WizardStatus.publishing
-              ? () async {
-                  final ok = await controller.publish();
-                  if (ok) Haptics.success();
-                }
-              : null,
+          onPressed:
+              state.readyToPublish && state.status != WizardStatus.publishing
+                  ? () async {
+                      final ok = await controller.publish();
+                      if (ok) Haptics.success();
+                    }
+                  : null,
           icon: state.status == WizardStatus.publishing
               ? const SizedBox(
-                  width: 20, height: 20,
+                  width: 20,
+                  height: 20,
                   child: CircularProgressIndicator(strokeWidth: 2.5),
                 )
               : const Icon(Icons.rocket_launch_outlined),
@@ -205,8 +207,8 @@ class _PublishedView extends StatelessWidget {
           curve: Curves.elasticOut,
           builder: (context, scale, child) =>
               Transform.scale(scale: scale, child: child),
-          child: const Icon(Icons.celebration,
-              size: 88, color: AppColors.coral),
+          child:
+              const Icon(Icons.celebration, size: 88, color: AppColors.coral),
         ),
         const SizedBox(height: Spacing.xl),
         Text(

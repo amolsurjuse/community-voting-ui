@@ -78,7 +78,8 @@ class EventCoverArt extends StatelessWidget {
                 child: Text(emoji, style: TextStyle(fontSize: height * 0.85)),
               ),
             ),
-            Center(child: Text(emoji, style: TextStyle(fontSize: height * 0.32))),
+            Center(
+                child: Text(emoji, style: TextStyle(fontSize: height * 0.32))),
           ],
         ),
       ),
