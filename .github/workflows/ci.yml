@@ -20,7 +20,8 @@ jobs:
           cache: gradle
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.27.4"
+          # Android project uses AGP 9 / Gradle 9, supported from Flutter 3.44.
+          flutter-version: "3.44.0"
           channel: stable
           cache: true
       - run: flutter pub get
