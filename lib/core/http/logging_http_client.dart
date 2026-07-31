@@ -1,5 +1,3 @@
-import 'dart:developer' as developer;
-
 import 'package:http/http.dart' as http;
 
 /// An [http.BaseClient] decorator that logs every request and response.
@@ -49,7 +47,8 @@ class LoggingHttpClient extends http.BaseClient {
       buffer.writeln('    Body: ${_truncate(request.body)}');
     }
 
-    developer.log(buffer.toString(), name: 'HTTP');
+    // ignore: avoid_print
+    print(buffer.toString());
   }
 
   void _logResponse(
@@ -72,7 +71,8 @@ class LoggingHttpClient extends http.BaseClient {
       buffer.writeln('    Body: ${_truncate(body)}');
     }
 
-    developer.log(buffer.toString(), name: 'HTTP');
+    // ignore: avoid_print
+    print(buffer.toString());
   }
 
   String _truncate(String value) {
