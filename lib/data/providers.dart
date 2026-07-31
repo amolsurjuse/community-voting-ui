@@ -15,7 +15,7 @@ import 'unavailable_repositories.dart';
 const _useRealApi = bool.fromEnvironment('USE_REAL_API', defaultValue: true);
 const _gatewayUrl = String.fromEnvironment(
   'GATEWAY_BASE_URL',
-  defaultValue: 'https://api.electrahub.net',
+  defaultValue: 'https://api.pulsevote-electrahub.net',
 );
 
 /// Shared HTTP client with request/response logging.

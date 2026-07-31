@@ -63,7 +63,7 @@ jobs:
         run: >-
           flutter build appbundle --release
           --dart-define=USE_REAL_API=true
-          --dart-define=GATEWAY_BASE_URL=https://api.electrahub.net
+          --dart-define=GATEWAY_BASE_URL=https://api.pulsevote-electrahub.net
       - uses: actions/upload-artifact@v4
         with:
           name: pulsevote-android-${{ github.ref_name }}
