@@ -58,7 +58,7 @@ jobs:
       - run: flutter pub get
       - run: dart format --output=none --set-exit-if-changed lib test
       - run: flutter analyze --no-fatal-infos
-      - run: flutter test
+      - run: flutter test --dart-define=USE_REAL_API=false
       - name: Build production Android app bundle
         run: >-
           flutter build appbundle --release
