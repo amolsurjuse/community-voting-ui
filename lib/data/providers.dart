@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:http/http.dart' as http;
 
+import '../core/http/logging_http_client.dart';
 import '../core/storage/secure_store.dart';
 import '../core/storage/platform_secure_store.dart';
 import '../domain/repositories.dart';
@@ -13,6 +15,11 @@ const _useRealApi = bool.fromEnvironment('USE_REAL_API');
 const _gatewayUrl = String.fromEnvironment(
   'GATEWAY_BASE_URL',
   defaultValue: 'http://10.0.2.2:8090',
+);
+
+/// Shared HTTP client with request/response logging.
+final httpClientProvider = Provider<http.Client>(
+  (ref) => LoggingHttpClient(),
 );
 
 /// Composition root. Swap these providers to point the app at a real backend
@@ -34,6 +41,7 @@ final authRepositoryProvider = Provider<AuthRepository>(
       ? HttpAuthRepository(
           gatewayBaseUri: Uri.parse(_gatewayUrl),
           secureStore: ref.watch(secureStoreProvider),
+          client: ref.watch(httpClientProvider),
         )
       : MockAuthRepository(
           ref.watch(mockBackendProvider),
@@ -48,6 +56,7 @@ final eventRepositoryProvider = Provider<EventRepository>(
         ? HttpEventRepository(
             gatewayBaseUri: Uri.parse(_gatewayUrl),
             fallback: fallback,
+            client: ref.watch(httpClientProvider),
           )
         : fallback;
   },
@@ -58,6 +67,7 @@ final ballotRepositoryProvider = Provider<BallotRepository>(
       ? HttpBallotRepository(
           gatewayBaseUri: Uri.parse(_gatewayUrl),
           secureStore: ref.watch(secureStoreProvider),
+          client: ref.watch(httpClientProvider),
         )
       : MockBallotRepository(ref.watch(mockBackendProvider)),
 );
