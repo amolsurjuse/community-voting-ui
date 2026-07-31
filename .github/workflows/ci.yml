@@ -32,7 +32,7 @@ jobs:
       - run: >-
           flutter build apk --debug
           --dart-define=USE_REAL_API=true
-          --dart-define=GATEWAY_BASE_URL=https://api.pulsevote.app
+          --dart-define=GATEWAY_BASE_URL=https://api.electrahub.net
       - uses: actions/upload-artifact@v4
         with:
           name: pulsevote-debug-apk
