@@ -10,11 +10,12 @@ import 'mock_repositories.dart';
 import 'http_auth_repository.dart';
 import 'http_ballot_repository.dart';
 import 'http_event_repository.dart';
+import 'unavailable_repositories.dart';
 
-const _useRealApi = bool.fromEnvironment('USE_REAL_API');
+const _useRealApi = bool.fromEnvironment('USE_REAL_API', defaultValue: true);
 const _gatewayUrl = String.fromEnvironment(
   'GATEWAY_BASE_URL',
-  defaultValue: 'http://10.0.2.2:8090',
+  defaultValue: 'https://api.electrahub.net',
 );
 
 /// Shared HTTP client with request/response logging.
@@ -55,7 +56,6 @@ final eventRepositoryProvider = Provider<EventRepository>(
     return _useRealApi
         ? HttpEventRepository(
             gatewayBaseUri: Uri.parse(_gatewayUrl),
-            fallback: fallback,
             client: ref.watch(httpClientProvider),
           )
         : fallback;
@@ -73,13 +73,19 @@ final ballotRepositoryProvider = Provider<BallotRepository>(
 );
 
 final resultsRepositoryProvider = Provider<ResultsRepository>(
-  (ref) => MockResultsRepository(ref.watch(mockBackendProvider)),
+  (ref) => _useRealApi
+      ? const UnavailableResultsRepository()
+      : MockResultsRepository(ref.watch(mockBackendProvider)),
 );
 
 final analyticsRepositoryProvider = Provider<AnalyticsRepository>(
-  (ref) => MockAnalyticsRepository(ref.watch(mockBackendProvider)),
+  (ref) => _useRealApi
+      ? const UnavailableAnalyticsRepository()
+      : MockAnalyticsRepository(ref.watch(mockBackendProvider)),
 );
 
 final activityRepositoryProvider = Provider<ActivityRepository>(
-  (ref) => MockActivityRepository(ref.watch(mockBackendProvider)),
+  (ref) => _useRealApi
+      ? const UnavailableActivityRepository()
+      : MockActivityRepository(ref.watch(mockBackendProvider)),
 );

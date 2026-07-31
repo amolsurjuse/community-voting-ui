@@ -28,7 +28,7 @@ jobs:
       - run: dart format --output=none --set-exit-if-changed lib test
       # Keep legacy style findings visible while failing on warnings and errors.
       - run: flutter analyze --no-fatal-infos
-      - run: flutter test --coverage
+      - run: flutter test --coverage --dart-define=USE_REAL_API=false
       - run: >-
           flutter build apk --debug
           --dart-define=USE_REAL_API=true

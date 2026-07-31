@@ -7,19 +7,16 @@ import '../domain/models/enums.dart';
 import '../domain/models/event.dart';
 import '../domain/repositories.dart';
 
-/// Participant event reads use the service API. Organizer authoring and
-/// discovery remain delegated until their backend endpoints are introduced.
+/// Participant event reads use the service API. Unsupported server operations
+/// fail explicitly instead of silently returning seeded mock data.
 class HttpEventRepository implements EventRepository {
   HttpEventRepository({
     required Uri gatewayBaseUri,
-    required EventRepository fallback,
     http.Client? client,
   })  : _baseUri = gatewayBaseUri,
-        _fallback = fallback,
         _client = client ?? http.Client();
 
   final Uri _baseUri;
-  final EventRepository _fallback;
   final http.Client _client;
 
   @override
@@ -108,29 +105,38 @@ class HttpEventRepository implements EventRepository {
       };
 
   @override
-  Future<VotingEvent> archive(String eventId) => _fallback.archive(eventId);
+  Future<VotingEvent> archive(String eventId) => _unsupported();
   @override
-  Future<VotingEvent> close(String eventId) => _fallback.close(eventId);
+  Future<VotingEvent> close(String eventId) => _unsupported();
   @override
-  Future<List<VotingEvent>> closingSoon() => _fallback.closingSoon();
+  Future<List<VotingEvent>> closingSoon() => _unsupported();
   @override
   Future<List<VotingEvent>> discover(DiscoverFilters filters, {int page = 0}) =>
-      _fallback.discover(filters, page: page);
+      _unsupported();
   @override
-  Future<VotingEvent> duplicate(String eventId) => _fallback.duplicate(eventId);
+  Future<VotingEvent> duplicate(String eventId) => _unsupported();
   @override
-  Future<List<VotingEvent>> newlyPublished() => _fallback.newlyPublished();
+  Future<List<VotingEvent>> newlyPublished() => _unsupported();
   @override
-  Future<VotingEvent> publish(String eventId) => _fallback.publish(eventId);
+  Future<VotingEvent> publish(String eventId) => _unsupported();
   @override
   Future<VotingEvent?> redeemInvitation(String token) =>
-      _fallback.redeemInvitation(token);
+      _unsupported();
   @override
   Future<VotingEvent> saveDraft(VotingEvent draft) =>
-      _fallback.saveDraft(draft);
+      _unsupported();
   @override
-  Future<List<VotingEvent>> trending() => _fallback.trending();
+  Future<List<VotingEvent>> trending() => _unsupported();
   @override
-  Stream<List<VotingEvent>> watchOrganizerEvents() =>
-      _fallback.watchOrganizerEvents();
+  Stream<List<VotingEvent>> watchOrganizerEvents() => Stream.error(
+        const RepositoryException(
+          'Organizer event APIs are not available on the server yet.',
+        ),
+      );
+
+  Future<T> _unsupported<T>() => Future.error(
+        const RepositoryException(
+          'This operation is not available on the server yet.',
+        ),
+      );
 }
