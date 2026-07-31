@@ -19,3 +19,7 @@ android/local.properties
 
 # macOS
 .DS_Store
+# Android release signing material
+android/key.properties
+android/app/*.jks
+android/app/*.keystore
